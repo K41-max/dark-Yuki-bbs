@@ -170,31 +170,34 @@ select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  padding: 8px 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 12px 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
   background-color: #f9f9f9;
   color: #333;
-  font-size: 14px;
+  font-size: 16px;
+  font-family: 'Noto Serif JP', serif; /* カスタムフォントの適用 */
+  transition: border-color 0.3s ease;
 }
 
 select:hover {
-  border-color: #999;
+  border-color: #aaa;
 }
 
 select:focus {
   outline: none;
-  border-color: #666;
+  border-color: #555;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
+/* ドロップダウン矢印のスタイル */
 select::after {
   content: '\25BC';
   position: absolute;
   top: 50%;
-  right: 12px;
+  right: 16px;
   transform: translateY(-50%);
-  pointer-events: none;
+  color: #666;
 }
 
     </style>
