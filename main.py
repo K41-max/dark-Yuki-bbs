@@ -261,20 +261,18 @@ def view_bbs(request: Request,name: Union[str, None] = "",seed:Union[str,None]="
     return template("bbs.html",{"request":request})
 
 @cache(seconds=5)
-def bbsapi_cached(verify,channel):
-    return requests.get(fr"{url}bbs/api?t={urllib.parse.quote(str(int(time.time()*1000)))}&verify={urllib.parse.quote(verify)}&channel={urllib.parse.quote(channel)}",cookies={"yuki":"True"}).text
+def bbsapi_cached(verify,channel,server):
+    return requests.get(fr"{server}bbs/api?t={urllib.parse.quote(str(int(time.time()*1000)))}&verify={urllib.parse.quote(verify)}&channel={urllib.parse.quote(channel)}",cookies={"yuki":"True"}).text
 
 @app.get("/bbs/api",response_class=HTMLResponse)
-def view_bbs(request: Request,t: str,channel:Union[str,None]="main",verify: Union[str,None] = "false"):
-    # print(fr"{url}bbs/api?t={urllib.parse.quote(t)}&verify={urllib.parse.quote(verify)}&channel={urllib.parse.quote(channel)}")
-    return bbsapi_cached(verify,channel)
+def view_bbs(request: Request,t: str,channel:Union[str,None]="main",server:Union[str,None]="https://yukibbs-server.onrender.com/",verify: Union[str,None] = "false"):
+    return bbsapi_cached(verify,channel,server)
     
 @app.get("/bbs/result")
-def write_bbs(request: Request,name: str = "",message: str = "",seed:Union[str,None] = "",channel:Union[str,None]="main",verify:Union[str,None]="https://yukibbs-server.onrender.com",verify:Union[str,None]="false"):
+def write_bbs(request: Request,name: str = "",message: str = "",seed:Union[str,None] = "",channel:Union[str,None]="main", server:Union[str,None]="https://yukibbs-server.onrender.com/",verify:Union[str,None]="false"):
     message = base64.b64decode(message).decode('utf-8')
-    # print(get_info(request))
     print(f"name:{name}, seed:{seed}, channel:{channel}, message:{message}")
-    t = requests.get(fr"{url}bbs/result?name={urllib.parse.quote(name)}&message={urllib.parse.quote(message)}&seed={urllib.parse.quote(seed)}&channel={urllib.parse.quote(channel)}&verify={urllib.parse.quote(verify)}&info={urllib.parse.quote(get_info(request))}",cookies={"yuki":"True"}, allow_redirects=False)
+    t = requests.get(fr"{server}bbs/result?name={urllib.parse.quote(name)}&message={urllib.parse.quote(message)}&seed={urllib.parse.quote(seed)}&channel={urllib.parse.quote(channel)}&verify={urllib.parse.quote(verify)}&info={urllib.parse.quote(get_info(request))}",cookies={"yuki":"True"}, allow_redirects=False)
     print(t)
     if t.status_code != 307:
         return HTMLResponse(t.text)
