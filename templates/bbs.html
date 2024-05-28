@@ -475,6 +475,17 @@
       window.addEventListener('offline', updateConnectionStatus);
     
       loadMessage();
+
+      var selectedserver = localStorage.getItem('server');
+      if (selectedserver) {
+        $('#server').val(selectedserver);
+      }
+      
+      $('#server').change(function() {
+        var newSelectedChannel = $(this).val();
+        localStorage.setItem('server', newSelectedserver);
+        loadMessage();
+      });
       
       var selectedChannel = localStorage.getItem('channel');
       if (selectedChannel) {
