@@ -277,16 +277,16 @@
     var $form = $("#form");
     var $ta = $("#message");
     var $entersubmit = $("#entersubmit");
+    
+　　　$(document).ready(function() {
+        var checkBox = $('#entersubmit');
 
-    /*
-    $(document).ready(function() {
-          var isChecked = localStorage.getItem("entersubmited");
-          if (isChecked === "true") {
-            $entersubmit.prop("checked", true);
-          }
+        checkBox.prop('checked', localStorage.getItem('entersubmit') === 'true');
+
+        checkBox.change(function() {
+          localStorage.setItem('entersubmit', $(this).prop('checked'));
         });
-
-    */
+　　　　});
       var entersubmit = localStorage.getItem('entersubmit') === 'true';
       $('#entersubmit').prop('entersubmit', entersubmit);
 
