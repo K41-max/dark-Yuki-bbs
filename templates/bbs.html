@@ -200,7 +200,7 @@
         <option value="battle">バトスタ</option>
       </select>
       <p>ここから鯖を選んでください</p>
-      <select name="channel" id="channel">
+      <select name="server" id="server">
         <option value="https://yukibbs-server.onrender.com/">本鯖</option>
         <option value="https://yukibbs-kari.onrender.com/">仮鯖</option>
       </select>
@@ -333,8 +333,8 @@
     }
       
     // メッセージ送信
-    function sendMessage(name, seed, channel, message) {
-      if (name=='' || seed=='' || channel=='' || message=='') {
+    function sendMessage(name, seed, channel, message ,server) {
+      if (name=='' || seed=='' || channel=='' || message=='' || server=='') {
         console.warn('Invalid argument(s).')
       } else {
         message = btoa(unescape(encodeURIComponent(message)));
@@ -345,7 +345,8 @@
             'name': name,
             'seed': seed,
             'message': message,
-            'channel': channel
+            'channel': channel,
+            'server':server
           }
         });
         console.log(message, btoa(message))
@@ -357,7 +358,8 @@
       var seed = $('#seed').val();
       var message = $('#message').val();
       var channel = $('#channel').val();
-      sendMessage(name, seed, channel, message);
+      var server = $('#server').val();
+      sendMessage(name, seed, channel, message, server);
       $('#message').val("");
     }
     
@@ -369,6 +371,7 @@
       
       var channel = $('#channel').val();
       var filter = $('#verify').prop('checked');
+      var server = $('#server').val();
       
       xhr = $.ajax({
         type: 'GET',
@@ -380,6 +383,7 @@
         data: {
           'channel': channel,
           'verify': filter,
+          'server':server,
           't': 0
         },
         success: function(data) {
