@@ -277,21 +277,25 @@
     var $form = $("#form");
     var $ta = $("#message");
     var $entersubmit = $("#entersubmit");
-    
+
+    /*
     $(document).ready(function() {
           var isChecked = localStorage.getItem("entersubmited");
           if (isChecked === "true") {
             $entersubmit.prop("checked", true);
           }
         });
+
     
-        $entersubmit.on("change", function() {
-          if ($(this).is(":checked")) {
-            localStorage.setItem("entersubmit", "true");
-          } else {
-            localStorage.setItem("entersubmit", "false");
-          }
-        });
+      var entersubmit = localStorage.getItem('entersubmit') === 'true';
+      $('#entersubmit').prop('entersubmit', entersubmit);
+    */
+    
+      $('#entersubmit').change(function() {
+        var entersubmit = $(this).prop('checked');
+        localStorage.setItem('entersubmit', entersubmit.toString());
+        loadMessage();
+      });
     
     $(document).on("keydown", "#message", function(e) {
           if ($entersubmit.is(":checked")) {
