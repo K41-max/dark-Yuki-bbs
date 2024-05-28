@@ -256,7 +256,7 @@ def thumbnail(v:str):
     return Response(content = requests.get(fr"https://img.youtube.com/vi/{v}/0.jpg").content,media_type=r"image/jpeg")
     
 @app.get("/bbs",response_class=HTMLResponse)
-def view_bbs(request: Request,name: Union[str, None] = "",seed:Union[str,None]="",channel:Union[str,None]="main",verify:Union[str,None]="false",server:Union[str,None]="https://yuibbs-server.onrender.com",yuki: Union[str] = Cookie(None)):
+def view_bbs(request: Request,name: Union[str, None] = "",seed:Union[str,None]="",channel:Union[str,None]="main",verify:Union[str,None]="false",server:Union[str,None]="https://yuibbs-server.onrender.com/",yuki: Union[str] = Cookie(None)):
 
     return template("bbs.html",{"request":request})
 
@@ -295,7 +295,7 @@ def home():
 
 @app.get("/bbs/howtouse",response_class=HTMLResponse)
 def view_bbs(request: Request,name: Union[str, None] = "",seed:Union[str,None]="",channel:Union[str,None]="main",verify:Union[str,None]="false",yuki: Union[str] = Cookie(None)):
-    # res = HTMLResponse(requests.get(fr"{url}bbs?name={urllib.parse.quote(name)}&seed={urllib.parse.quote(seed)}&channel={urllib.parse.quote(channel)}&verify={urllib.parse.quote(verify)}",cookies={"yuki":"True"}).text)
+
     return template("bbshow.html",{"request":request})
     #return res
 
