@@ -148,12 +148,9 @@ def get_level(word):
 
 
 def check_cokie(cookie):
-    return True
-
-
-
-
-
+    if cookie == "True":
+        return True
+    return False
 
 
 from fastapi import FastAPI, Depends
