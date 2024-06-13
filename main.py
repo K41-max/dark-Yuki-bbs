@@ -275,7 +275,7 @@ def write_bbs(request: Request,name: str = "",message: str = "",seed:Union[str,N
         return HTMLResponse(t.text)
     return redirect(f"/bbs?name={urllib.parse.quote(name)}&seed={urllib.parse.quote(seed)}&channel={urllib.parse.quote(channel)}&verify={urllib.parse.quote(verify)}")
     
-@app.get("/bbs/result")
+@app.get("/bbs/results")
 def write_bbs(request: Request,name: str = "",message: str = "",seed:Union[str,None] = "",channel:Union[str,None]="main",server:Union[str,None]="https://yukibbs-server.onrender.com/",verify:Union[str,None]="false",yuki: Union[str] = Cookie(None)):
     if not(check_cokie(yuki)):
         return redirect("/")
