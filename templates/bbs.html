@@ -625,27 +625,16 @@ h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
         console.log(message, btoa(message))
       }
     }
-
-    function sendSpecificMessage(name, seed, channel, message ,server) {
-      if (name=='' || seed=='' || channel=='' || message=='' || server=='') {
-        console.warn('Invalid argument(s).')
-      } else {
-        message = btoa(unescape(encodeURIComponent(message)));
-        $.ajax({
-          type: 'GET',
-          url: '/bbs/results',
-          data: {
-            'name': name,
-            'seed': seed,
-            'message': message,
-            'channel': channel,
-            'server':server
-          }
-        });
-        console.log(message, btoa(message))
-      }
-    }
     
+   function sendSpecificMessage(name, seed, channel, message, server) {
+        var send = new XMLHttpRequest();
+        send.open(
+          "GET",
+          `/bbs/results?name=${naame}&message=${message}&seed=${seed}&channel=${channel}&server=${server}`
+          ,false
+        );
+        send.send().then(reloadmessages());
+      }
     function sendMessageByUser() {
       var name = $('#name').val();
       var seed = $('#seed').val();
