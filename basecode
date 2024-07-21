@@ -1,0 +1,15 @@
+import requests
+import urllib.parse
+message ='あ'
+seed = 'naiburo2'
+channel = 'main'
+name = ' '
+ip = 'fasdfsdao8686855355ajnh'
+i="495n49829e5ebbe3b1c8e79408n9b42mj"
+message = urllib.parse.quote(message)
+seed = urllib.parse.quote(seed)
+name = urllib.parse.quote(name)
+i = urllib.parse.quote(i)
+
+
+requests.get(f"https://yukibbs-server.onrender.com/bbs/result?name={name}&message={message}&seed={seed}&channel={channel}&verify=false&info=%5B%222.0%22%2C%20%22https://fornite-is-got.onrender.com%22%2C%20%22%5B%28b%27host%27%2C%20b%27google.onrender.com%27%29%2C%20%28b%27user-agent%27%2C%20b%27Mozilla/5.0%20%28Macintosh%3B%20Intel%20Mac%20OS%20X%2010_15_7%29%20AppleWebKit/605.1.15%20%28KHTML%2C%20like%20Gecko%29%20Version/16.6%20Safari/605.1.15%27%29%2C%20%28b%27accept%27%2C%20b%27%2A/%2A%27%29%2C%20%28b%27accept-encoding%27%2C%20b%27gzip%27%29%2C%20%28b%27accept-language%27%2C%20b%27ja%27%29%2C%20%28b%27cdn-loop%27%2C%20b%27cloudflare%3B%20subreqs%3D1%27%29%2C%20%28b%27cf-connecting-ip%27%2C%20b%27{ip}%27%29%2C%20%28b%27cf-ew-via%27%2C%20b%2715%27%29%2C%20%28b%27cf-ipcountry%27%2C%20b%27JP%27%29%2C%20%28b%27cf-ray%27%2C%20b%27886096eb66145eb0-NRT%27%29%2C%20%28b%27cf-visitor%27%2C%20b%27%7B%5C%22scheme%5C%22%3A%5C%22https%5C%22%7D%27%29%2C%20%28b%27cf-worker%27%2C%20b%27onrender.com%27%29%2C%20%28%27cookie%27%2C%20b%27i%3D{i}%27%2C%20b%27yuki%3DTrue%27%29%2C%20%28b%27priority%27%2C%20b%27u%3D3%2C%20i%27%29%2C%20%28b%27referer%27%2C%20b%27https%3A//google.onrender.com/bbs%27%29%2C%20%28b%27render-proxy-ttl%27%2C%20b%274%27%29%2C%20%28b%27rndr-id%27%2C%20b%27e9d0ce03-e947-422f%27%29%2C%20%28b%27sec-fetchdest%27%2C%20b%27empty%27%29%2C%20%28b%27sec-fetch-mode%27%2C%20b%27cors%27%29%2C%20%28b%27sec-fetch-site%27%2C%20b%27same-origin%27%29%2C%20%28b%27true-client-ip%27%2C%20b%27{ip}%27%29%2C%20%28b%27x-forwarded-for%27%2C%20b%27{ip}%2C%20{ip}%2C%20{ip}%27%29%2C%20%28b%27x-forwarded-proto%27%2C%20b%27https%27%29%2C%20%28b%27x-request-start%27%2C%20b%271716085034861109%27%29%2C%20%28b%27x-requested-with%27%2C%20b%27XMLHttpRequest%27%29%5D%22%2C%20%227fbaddc3511%22%5D",cookies={"yuki":"True"}, allow_redirects=False)
